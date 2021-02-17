@@ -1,0 +1,112 @@
+<!-- 
+
+    Here, we have 4 components 
+    1) the main container that holds everything in it
+    |---  2) the layer container 
+    |---  3) the form container
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Slider</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container" id="container">
+      <!-- form container -->
+      <div class="form-container sign-up-form">
+        <h1>create account</h1>
+        <div class="form-container__icons">
+          <a href="#" class="form-container__link">
+            <svg class="form-container__icon-box">
+              <use xlink:href="./brands.svg#facebook"></use>
+            </svg>
+          </a>
+          <a href="#" class="form-container__link">
+            <svg class="form-container__icon-box">
+              <use xlink:href="./brands.svg#google-plus"></use>
+            </svg>
+          </a>
+          <a href="#" class="form-container__link">
+            <svg class="form-container__icon-box">
+              <use xlink:href="./brands.svg#linkedin"></use>
+            </svg>
+          </a>
+        </div>
+        <h3>or use your email for registration</h3>
+        <form action="#" class="form-container__form">
+          <input type="text" name="name" placeholder="Name" />
+          <input type="text" name="email" placeholder="Email" />
+          <input type="text" name="password" placeholder="Password" />
+          <button type="submit" class="form-container__button">sign up</button>
+        </form>
+      </div>
+      <div class="form-container sign-in-form">
+        <h1>sign in</h1>
+        <div class="form-container__icons">
+          <a href="#" class="form-container__link">
+            <svg class="form-container__icon-box">
+              <use xlink:href="./brands.svg#facebook"></use>
+            </svg>
+          </a>
+          <a href="#" class="form-container__link">
+            <svg class="form-container__icon-box">
+              <use xlink:href="./brands.svg#google-plus"></use>
+            </svg>
+          </a>
+          <a href="#" class="form-container__link">
+            <svg class="form-container__icon-box">
+              <use xlink:href="./brands.svg#linkedin"></use>
+            </svg>
+          </a>
+        </div>
+        <h3>or use your account</h3>
+        <form action="#" class="form-container__form">
+          <input type="text" name="name" placeholder="Name" />
+          <input type="text" name="email" placeholder="Email" />
+          <a href="#" class="form-container__link">forgot your password</a>
+          <button type="submit" class="form-container__button">sign up</button>
+        </form>
+      </div>
+
+      <!-- now for the layer, we have three parts and they are 
+      layer-focus
+       |-- layer 
+          |-- layer-panel 
+      
+      now, the layer-focus basically has 50% of the total container's width
+      and the layer has a width of 200% of its parent, which is 100% of the container's 
+      and now, we have these left and right panels positioned absouletely on the layer 
+      using the overflow:hidden of the layer focus, we can make the user to only see the 
+      left or the right content'
+        -->
+
+      <!-- layers  -->
+      <div class="layer-focus">
+        <div class="layer">
+          <div class="layer-panel layer-panel__right">
+            <h1>hello, friend</h1>
+            <h3>Enter your personal details and start journey with us</h3>
+            <button type="submit" id="sign-up">sign up</button>
+          </div>
+          <div class="layer-panel layer-panel__left">
+            <h1>welcome back!</h1>
+            <h3>
+              To keep connected with us please login with your personal info
+            </h3>
+            <button type="submit" id="sign-in">sign in</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="main.js"></script>
+  </body>
+</html>

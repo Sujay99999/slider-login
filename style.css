@@ -1,0 +1,282 @@
+:root {
+  --color-primary-1: #7400b8;
+  --color-primary-2: #5e60ce;
+  --color-primary-3: #4ea8de;
+  --color-primary-4: #4ea8de;
+  --color-primary-5: #72efdd;
+
+  --color-secondary-1: #f8f9fa;
+  --color-secondary-2: #adb5bd;
+  --color-secondary-3: #495057;
+  --color-secondary-4: #212529;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--color-secondary-1);
+
+  /* generally, to make the content centered in the screen, we apply yhe height of the body to be 100vh and the respective main container to 
+  have a margin of some prefixed lenggth on top 
+  and bottom and for the sides to be auto */
+  height: 100vh;
+}
+
+.container {
+  max-width: 100rem;
+  margin: auto;
+  top: 19%;
+  border-radius: 50px;
+  box-shadow: 3rem 4rem 4rem rgba(0, 0, 0, 0.4);
+  min-height: 45rem;
+  background-color: #fff;
+
+  /* test */
+  /* overflow: hidden; */
+
+  position: relative;
+}
+
+.form-container {
+  width: 50%;
+  height: 100%;
+  padding: 2rem 2.5rem;
+  background-color: #fff;
+  border-radius: 50px;
+
+  position: absolute;
+  top: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  transition: transform 0.6s ease-in-out;
+}
+
+/* as the form container is only half of total width, it need to move by 100% to right */
+.container.other .form-container {
+  transform: translateX(100%);
+}
+
+/* here,
+we are using css selector i.e all h1 elements inside the .form-container class.  */
+.form-container h1 {
+  font-size: 4rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  padding: 2rem 1.5rem;
+}
+
+.form-container h3 {
+  padding: 1.5rem 1.25rem;
+}
+
+.sign-in-form {
+  z-index: 20;
+}
+
+.container.other .sign-in-form {
+  z-index: 10;
+}
+
+.sign-up-form {
+  z-index: 10;
+}
+
+.container.other .sign-up-form {
+  z-index: 20;
+}
+
+.form-container__link:link,
+.form-container__link:visited {
+  text-decoration: none;
+}
+
+.form-container__icon-box {
+  height: 3rem;
+  width: 3rem;
+  fill: var(--color-secondary-3);
+
+  /* when we give padding to the svg icons, we must make sure to change the box-sizing to content box */
+  box-sizing: content-box;
+  padding: 1rem;
+  border: 2px solid var(--color-secondary-3);
+  border-radius: 50%;
+}
+
+.form-container__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* here,
+we are using css selector i.e all input elements inside the .form-container class.  */
+.form-container__form input {
+  padding: 0.7rem 1rem;
+  margin: 1rem 1.5rem;
+}
+
+.form-container__button {
+  margin-top: 1.5rem;
+  padding: 1.25rem 2rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-radius: 50px;
+  box-shadow: 0 7px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.form-container__button:focus {
+  outline: none;
+}
+
+.form-container__button:active {
+  transform: translateY(3px);
+  box-shadow: 0 4px rgba(0, 0, 0, 0.3);
+}
+
+/* intially, we will make this layer-focus to positioned absoluelty with respect ot the parent conatiner
+but the layer is something that occupies the entire container , beacuse its a child and has a width of 200% */
+.layer-focus {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  /* intially, for the first instant, the layer-focus is on the right side */
+  top: 0;
+  left: 50%;
+
+  /* these both makes the content such that it moves */
+  border-radius: 50px;
+  overflow: hidden;
+
+  transition: transform 0.6s ease-in-out;
+  /* test */
+  /* z-index: 50; */
+}
+
+.container.other .layer-focus {
+  transform: translateX(-100%);
+}
+
+.layer {
+  height: 100%;
+  width: 200%;
+  /* this is very important, the main trick because, the layer is a direct child of leyer-focus, and we need to position it same wrt the container*/
+  left: -100%;
+  background-image: linear-gradient(
+    to right bottom,
+    var(--color-primary-2),
+    var(--color-primary-4)
+  );
+
+  transition: transform 0.6s ease-in-out;
+
+  position: relative;
+}
+
+.container.other .layer {
+  transform: translateX(50%);
+}
+
+.layer-panel {
+  width: 50%;
+  height: 100%;
+  padding: 2rem 2.5rem;
+  color: #fff;
+
+  position: absolute;
+  top: 0;
+
+  /* this is only for the inner contents of the layer-panel */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* all h1 elements inside the layer-panel class */
+.layer-panel h1 {
+  padding: 2.5rem;
+  font-size: 3rem;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+.layer-panel h3 {
+  padding: 2.5rem;
+  font-weight: 200;
+  word-spacing: 2px;
+  font-size: 1.25rem;
+}
+
+.layer-panel button {
+  padding: 1.5rem 2rem;
+  background-color: transparent;
+  border-radius: 100px;
+  border: 2px solid #fff;
+  background-image: linear-gradient(
+    to right bottom,
+    var(--color-primary-2),
+    var(--color-primary-4)
+  );
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  box-shadow: 0 7px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.layer-panel button:focus {
+  outline: none;
+}
+
+.layer-panel button:active {
+  transform: translateY(3px);
+  box-shadow: 0 4px rgba(0, 0, 0, 0.3);
+}
+
+/* the layer-panel__left and the layer-panel__right are fixed wrt the
+layer */
+.layer-panel__left {
+  left: 0;
+
+  transition: transform 0.6s ease-in-out;
+
+  transform: translateX(-20%);
+}
+
+.layer-panel__right {
+  left: 50%;
+
+  transition: transform 0.6s ease-in;
+
+  transform: translateX(0%);
+}
+
+.container.other .layer-panel__left {
+  transform: translateX(0%);
+}
+
+.container.other .layer-panel__right {
+  transform: translateX(20%);
+}
